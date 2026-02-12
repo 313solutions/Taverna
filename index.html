@@ -14,8 +14,6 @@
         h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
         html { scroll-behavior: smooth; }
         .glass { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); }
-        
-        /* Input-uri custom */
         input, select, textarea { outline: none; transition: all 0.3s; }
         input:focus, select:focus, textarea:focus { border-color: #d97706; box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1); }
     </style>
@@ -65,7 +63,6 @@
                 </div>
                 <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">Savoarea <span class="text-amber-500 italic">tradiției</span>.</h1>
                 <p class="text-lg md:text-xl text-gray-200 mb-10 leading-relaxed max-w-lg font-light">Ingrediente locale, rețete reinterpretate și o atmosferă intimă.</p>
-                
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#meniu" class="bg-white text-gray-900 border-2 border-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-amber-50 hover:border-amber-50 hover:text-amber-700 transition flex items-center justify-center gap-2 shadow-xl">
                         <i class="fa-solid fa-book-open"></i> Vezi Meniul
@@ -137,12 +134,22 @@
                 <div class="col-span-1 md:col-span-1">
                     <h2 class="text-2xl font-bold text-white font-serif mb-6">Gusturi Alese</h2>
                     <p class="text-sm mb-8 leading-relaxed">Restaurantul unde aromele prind viață.</p>
+                    
                     <div class="flex gap-3">
-                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-[#1877F2] text-white rounded-lg flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-[#E4405F] text-white rounded-lg flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-black text-white rounded-lg flex items-center justify-center transition border border-gray-700"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://www.facebook.com/" target="_blank" class="w-10 h-10 bg-gray-800 hover:bg-[#1877F2] text-white rounded-lg flex items-center justify-center transition">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        
+                        <a href="https://www.instagram.com/" target="_blank" class="w-10 h-10 bg-gray-800 hover:bg-[#E4405F] text-white rounded-lg flex items-center justify-center transition">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        
+                        <a href="https://www.tiktok.com/" target="_blank" class="w-10 h-10 bg-gray-800 hover:bg-black text-white rounded-lg flex items-center justify-center transition border border-gray-700">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
                     </div>
                 </div>
+                
                 <div class="md:col-span-1">
                     <h3 class="text-white font-bold text-lg mb-6">Contact</h3>
                     <ul class="space-y-4">
@@ -217,23 +224,16 @@
         <div class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="closeMenuModal()"></div>
         <div class="fixed inset-0 z-10 overflow-y-auto">
             <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
-                
                 <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                     <button onclick="closeMenuModal()" class="absolute top-4 right-4 z-50 bg-gray-100 hover:bg-red-50 hover:text-red-600 text-gray-500 p-2 rounded-full transition"><i class="fa-solid fa-xmark text-lg"></i></button>
-
                     <div class="p-8">
                         <div class="text-center mb-6">
                             <span class="inline-block p-3 rounded-full bg-amber-50 text-amber-600 text-2xl mb-3"><i id="menuIcon" class="fa-solid fa-utensils"></i></span>
                             <h3 id="menuTitle" class="text-2xl font-serif font-bold text-gray-900">Meniu</h3>
                             <p class="text-gray-500 text-sm">O selecție a celor mai apreciate preparate.</p>
                         </div>
-
-                        <div id="menuItems" class="space-y-4 mb-8">
-                            </div>
-
-                        <button onclick="closeMenuModal(); toggleBookingModal()" class="w-full bg-gray-900 text-white py-3 rounded-xl font-bold hover:bg-amber-600 transition shadow-lg">
-                            Rezervă o masă pentru a gusta
-                        </button>
+                        <div id="menuItems" class="space-y-4 mb-8"></div>
+                        <button onclick="closeMenuModal(); toggleBookingModal()" class="w-full bg-gray-900 text-white py-3 rounded-xl font-bold hover:bg-amber-600 transition shadow-lg">Rezervă o masă pentru a gusta</button>
                     </div>
                 </div>
             </div>
@@ -241,11 +241,7 @@
     </div>
 
     <script>
-        function toggleMenu() {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
-        }
-
-        // --- Logică Modal Rezervare ---
+        function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
         function toggleBookingModal() {
             const modal = document.getElementById('bookingModal');
             modal.classList.toggle('hidden');
@@ -264,7 +260,6 @@
             window.open(`https://wa.me/${restaurantPhone}?text=${message}`, '_blank');
         }
 
-        // --- Logică Modal Meniu (Pop-up dinamic) ---
         const menus = {
             'aperitive': {
                 title: "Aperitive",
@@ -308,22 +303,14 @@
             const data = menus[category];
             const modal = document.getElementById('menuModal');
             const listContainer = document.getElementById('menuItems');
-            
-            // Setare titlu si iconita
             document.getElementById('menuTitle').innerText = data.title;
             document.getElementById('menuIcon').className = `fa-solid ${data.icon}`;
-
-            // Generare lista preparate HTML
             listContainer.innerHTML = data.items.map(item => `
                 <div class="flex justify-between items-start border-b border-gray-100 pb-3 last:border-0">
-                    <div class="text-left">
-                        <h4 class="font-bold text-gray-900">${item.name}</h4>
-                        <p class="text-xs text-gray-500">${item.desc}</p>
-                    </div>
+                    <div class="text-left"><h4 class="font-bold text-gray-900">${item.name}</h4><p class="text-xs text-gray-500">${item.desc}</p></div>
                     <span class="font-bold text-amber-600 whitespace-nowrap ml-4">${item.price}</span>
                 </div>
             `).join('');
-
             modal.classList.remove('hidden');
         }
 
