@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gusturi Alese - Rezervări Online</title>
+    <title>Gusturi Alese - Restaurant & Wine</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
     
     <style>
         body { font-family: 'Inter', sans-serif; }
@@ -38,7 +38,7 @@
                 <a href="#meniu" class="hover:text-amber-600 transition">Meniu</a>
                 <a href="#poveste" class="hover:text-amber-600 transition">Poveste</a>
                 <a href="#contact" class="hover:text-amber-600 transition">Contact</a>
-                <button onclick="toggleModal()" class="bg-amber-600 text-white px-6 py-2.5 rounded-full hover:bg-amber-700 transition shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-0.5 flex items-center gap-2 font-semibold">
+                <button onclick="toggleBookingModal()" class="bg-amber-600 text-white px-6 py-2.5 rounded-full hover:bg-amber-700 transition shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-0.5 flex items-center gap-2 font-semibold">
                     <i class="fa-regular fa-calendar-days"></i> <span>Rezervă o Masă</span>
                 </button>
             </div>
@@ -48,7 +48,7 @@
             <a href="#acasa" onclick="toggleMenu()" class="text-lg font-medium py-2 border-b border-gray-50">Acasă</a>
             <a href="#meniu" onclick="toggleMenu()" class="text-lg font-medium py-2 border-b border-gray-50">Meniu</a>
             <a href="#contact" onclick="toggleMenu()" class="text-lg font-medium py-2">Contact</a>
-            <button onclick="toggleModal(); toggleMenu()" class="bg-amber-600 text-white w-full py-4 rounded-xl font-bold mt-2 shadow-lg">Rezervă Acum</button>
+            <button onclick="toggleBookingModal(); toggleMenu()" class="bg-amber-600 text-white w-full py-4 rounded-xl font-bold mt-2 shadow-lg">Rezervă Acum</button>
         </div>
     </nav>
 
@@ -65,9 +65,11 @@
                 </div>
                 <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">Savoarea <span class="text-amber-500 italic">tradiției</span>.</h1>
                 <p class="text-lg md:text-xl text-gray-200 mb-10 leading-relaxed max-w-lg font-light">Ingrediente locale, rețete reinterpretate și o atmosferă intimă.</p>
+                
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <button onclick="toggleModal()" class="bg-amber-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-amber-700 transition shadow-xl hover:shadow-amber-500/20 flex items-center justify-center gap-3"><i class="fa-solid fa-utensils"></i> Rezervă Masă</button>
-                    <a href="#meniu" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-gray-900 transition flex items-center justify-center">Vezi Meniul</a>
+                    <a href="#meniu" class="bg-white text-gray-900 border-2 border-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-amber-50 hover:border-amber-50 hover:text-amber-700 transition flex items-center justify-center gap-2 shadow-xl">
+                        <i class="fa-solid fa-book-open"></i> Vezi Meniul
+                    </a>
                 </div>
             </div>
         </div>
@@ -80,37 +82,37 @@
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-2 mb-4">Meniul Zilei</h2>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="group bg-white rounded-2xl p-8 border border-stone-200 hover:border-amber-300 transition-all duration-300 hover:shadow-xl cursor-pointer" onclick="toggleModal()">
+                <div class="group bg-white rounded-2xl p-8 border border-stone-200 hover:border-amber-300 transition-all duration-300 hover:shadow-xl cursor-pointer" onclick="openMenuModal('aperitive')">
                     <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl text-amber-600 mb-6 group-hover:bg-amber-600 group-hover:text-white transition">
                         <i class="fa-solid fa-bowl-food"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2 text-gray-900">Aperitive</h3>
                     <p class="text-gray-500 text-sm mb-6">Bruschete, platouri tradiționale.</p>
-                    <div class="text-amber-700 font-bold text-sm uppercase">Vezi Selecția <i class="fa-solid fa-arrow-right ml-1"></i></div>
+                    <div class="text-amber-700 font-bold text-sm uppercase group-hover:translate-x-2 transition-transform inline-flex items-center">Vezi Selecția <i class="fa-solid fa-arrow-right ml-2"></i></div>
                 </div>
-                <div class="group bg-white rounded-2xl p-8 border border-stone-200 hover:border-amber-300 transition-all duration-300 hover:shadow-xl cursor-pointer" onclick="toggleModal()">
+                <div class="group bg-white rounded-2xl p-8 border border-stone-200 hover:border-amber-300 transition-all duration-300 hover:shadow-xl cursor-pointer" onclick="openMenuModal('principal')">
                     <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl text-amber-600 mb-6 group-hover:bg-amber-600 group-hover:text-white transition">
                         <i class="fa-solid fa-drumstick-bite"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2 text-gray-900">Fel Principal</h3>
                     <p class="text-gray-500 text-sm mb-6">Steak vită, paste artizanale.</p>
-                    <div class="text-amber-700 font-bold text-sm uppercase">Vezi Selecția <i class="fa-solid fa-arrow-right ml-1"></i></div>
+                    <div class="text-amber-700 font-bold text-sm uppercase group-hover:translate-x-2 transition-transform inline-flex items-center">Vezi Selecția <i class="fa-solid fa-arrow-right ml-2"></i></div>
                 </div>
-                <div class="group bg-white rounded-2xl p-8 border border-stone-200 hover:border-amber-300 transition-all duration-300 hover:shadow-xl cursor-pointer" onclick="toggleModal()">
+                <div class="group bg-white rounded-2xl p-8 border border-stone-200 hover:border-amber-300 transition-all duration-300 hover:shadow-xl cursor-pointer" onclick="openMenuModal('vinuri')">
                     <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl text-amber-600 mb-6 group-hover:bg-amber-600 group-hover:text-white transition">
                         <i class="fa-solid fa-wine-glass"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2 text-gray-900">Vinuri</h3>
                     <p class="text-gray-500 text-sm mb-6">Colecție de vinuri românești.</p>
-                    <div class="text-amber-700 font-bold text-sm uppercase">Vezi Selecția <i class="fa-solid fa-arrow-right ml-1"></i></div>
+                    <div class="text-amber-700 font-bold text-sm uppercase group-hover:translate-x-2 transition-transform inline-flex items-center">Vezi Selecția <i class="fa-solid fa-arrow-right ml-2"></i></div>
                 </div>
-                <div class="group bg-white rounded-2xl p-8 border border-stone-200 hover:border-amber-300 transition-all duration-300 hover:shadow-xl cursor-pointer" onclick="toggleModal()">
+                <div class="group bg-white rounded-2xl p-8 border border-stone-200 hover:border-amber-300 transition-all duration-300 hover:shadow-xl cursor-pointer" onclick="openMenuModal('desert')">
                     <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl text-amber-600 mb-6 group-hover:bg-amber-600 group-hover:text-white transition">
                         <i class="fa-solid fa-ice-cream"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2 text-gray-900">Deserturi</h3>
                     <p class="text-gray-500 text-sm mb-6">Papanași, lava cake.</p>
-                    <div class="text-amber-700 font-bold text-sm uppercase">Vezi Selecția <i class="fa-solid fa-arrow-right ml-1"></i></div>
+                    <div class="text-amber-700 font-bold text-sm uppercase group-hover:translate-x-2 transition-transform inline-flex items-center">Vezi Selecția <i class="fa-solid fa-arrow-right ml-2"></i></div>
                 </div>
             </div>
         </div>
@@ -161,26 +163,20 @@
     </footer>
 
     <div id="bookingModal" class="hidden fixed inset-0 z-[60]" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="toggleModal()"></div>
+        <div class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="toggleBookingModal()"></div>
         <div class="fixed inset-0 z-10 overflow-y-auto">
             <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
-                
                 <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-4xl flex flex-col md:flex-row">
-                    <button onclick="toggleModal()" class="absolute top-4 right-4 z-50 bg-gray-100 hover:bg-gray-200 text-gray-600 p-2 rounded-full transition duration-200"><i class="fa-solid fa-xmark text-xl"></i></button>
+                    <button onclick="toggleBookingModal()" class="absolute top-4 right-4 z-50 bg-gray-100 hover:bg-gray-200 text-gray-600 p-2 rounded-full transition duration-200"><i class="fa-solid fa-xmark text-xl"></i></button>
 
                     <div class="bg-amber-700 text-white w-full md:w-[300px] flex-shrink-0 p-8 flex flex-col justify-between relative">
                         <div class="relative z-10">
                             <h3 class="text-2xl font-serif font-bold mb-2">Rezervare Masă</h3>
-                            <p class="text-amber-100 text-sm mb-6">Completează formularul și te vom redirecționa automat către WhatsApp pentru confirmare.</p>
+                            <p class="text-amber-100 text-sm mb-6">Completează formularul și te vom redirecționa automat către WhatsApp.</p>
                             <div class="space-y-4">
                                 <a href="tel:0723040207" class="flex items-center gap-4 bg-white/10 hover:bg-white/20 p-4 rounded-xl transition border border-white/10">
                                     <div class="w-8 h-8 rounded-full bg-white text-amber-700 flex items-center justify-center"><i class="fa-solid fa-phone"></i></div>
                                     <div><p class="text-xs text-amber-200 uppercase font-bold">Sună-ne</p><p class="font-bold">0723 040 207</p></div>
-                                </a>
-                                
-                                <a href="https://wa.me/40723040207" target="_blank" class="flex items-center gap-4 bg-green-600/90 hover:bg-green-600 p-4 rounded-xl transition border border-white/10 shadow-lg">
-                                    <div class="w-8 h-8 rounded-full bg-white text-green-700 flex items-center justify-center"><i class="fa-brands fa-whatsapp text-xl"></i></div>
-                                    <div><p class="text-xs text-green-100 uppercase font-bold">Scrie pe WhatsApp</p><p class="font-bold">Chat Rapid</p></div>
                                 </a>
                             </div>
                         </div>
@@ -191,45 +187,53 @@
                             <h3 class="text-xl font-bold text-gray-900 font-serif">Detalii Rezervare</h3>
                             <p class="text-sm text-gray-500">Confirmarea se primește instant pe WhatsApp.</p>
                         </div>
-                        
                         <form id="whatsappForm" onsubmit="sendToWhatsapp(event)" class="space-y-4">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Nume Complet</label>
-                                    <input type="text" id="name" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500 focus:border-amber-500" placeholder="ex: Andrei Popescu">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Telefon</label>
-                                    <input type="tel" id="phone" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500 focus:border-amber-500" placeholder="ex: 0723 040 207">
-                                </div>
+                                <div><label class="block text-sm font-medium text-gray-700 mb-1">Nume Complet</label><input type="text" id="name" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500" placeholder="ex: Andrei"></div>
+                                <div><label class="block text-sm font-medium text-gray-700 mb-1">Telefon</label><input type="tel" id="phone" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500" placeholder="ex: 0723 040 207"></div>
                             </div>
-
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Data</label>
-                                    <input type="date" id="date" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Ora</label>
-                                    <input type="time" id="time" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
-                                </div>
+                                <div><label class="block text-sm font-medium text-gray-700 mb-1">Data</label><input type="date" id="date" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500"></div>
+                                <div><label class="block text-sm font-medium text-gray-700 mb-1">Ora</label><input type="time" id="time" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500"></div>
                             </div>
-
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Număr Persoane</label>
-                                <select id="guests" class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                                <select id="guests" class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500">
                                     <option value="2 Persoane">2 Persoane</option>
                                     <option value="3-4 Persoane">3-4 Persoane</option>
                                     <option value="5-6 Persoane">5-6 Persoane</option>
                                     <option value="Grup Mare (7+)">Grup Mare (7+)</option>
                                 </select>
                             </div>
-
-                            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
-                                <i class="fa-brands fa-whatsapp text-2xl"></i> Trimite Cererea pe WhatsApp
-                            </button>
-                            <p class="text-xs text-center text-gray-400 mt-2">Nu stocăm datele tale. Mesajul se trimite direct de pe telefonul tău.</p>
+                            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-2xl"></i> Trimite pe WhatsApp</button>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="menuModal" class="hidden fixed inset-0 z-[70]" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="closeMenuModal()"></div>
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                
+                <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                    <button onclick="closeMenuModal()" class="absolute top-4 right-4 z-50 bg-gray-100 hover:bg-red-50 hover:text-red-600 text-gray-500 p-2 rounded-full transition"><i class="fa-solid fa-xmark text-lg"></i></button>
+
+                    <div class="p-8">
+                        <div class="text-center mb-6">
+                            <span class="inline-block p-3 rounded-full bg-amber-50 text-amber-600 text-2xl mb-3"><i id="menuIcon" class="fa-solid fa-utensils"></i></span>
+                            <h3 id="menuTitle" class="text-2xl font-serif font-bold text-gray-900">Meniu</h3>
+                            <p class="text-gray-500 text-sm">O selecție a celor mai apreciate preparate.</p>
+                        </div>
+
+                        <div id="menuItems" class="space-y-4 mb-8">
+                            </div>
+
+                        <button onclick="closeMenuModal(); toggleBookingModal()" class="w-full bg-gray-900 text-white py-3 rounded-xl font-bold hover:bg-amber-600 transition shadow-lg">
+                            Rezervă o masă pentru a gusta
+                        </button>
                     </div>
                 </div>
             </div>
@@ -238,11 +242,11 @@
 
     <script>
         function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
+            document.getElementById('mobileMenu').classList.toggle('hidden');
         }
 
-        function toggleModal() {
+        // --- Logică Modal Rezervare ---
+        function toggleBookingModal() {
             const modal = document.getElementById('bookingModal');
             modal.classList.toggle('hidden');
             document.body.style.overflow = modal.classList.contains('hidden') ? 'auto' : 'hidden';
@@ -250,24 +254,81 @@
 
         function sendToWhatsapp(e) {
             e.preventDefault();
-
-            // 1. Preia datele din formular
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const date = document.getElementById('date').value;
             const time = document.getElementById('time').value;
             const guests = document.getElementById('guests').value;
-
-            // 2. Numarul de telefon ACTUALIZAT
-            // Format: 407xxxxxxxx (fara + sau 00)
             const restaurantPhone = "40723040207"; 
-
-            // 3. Construieste mesajul
             const message = `Salut, aș dori o rezervare la Gusturi Alese.%0A%0A👤 Nume: *${name}*%0A📞 Telefon: ${phone}%0A📅 Data: ${date}%0A⏰ Ora: ${time}%0A👥 Persoane: ${guests}%0A%0ASe poate confirma?`;
+            window.open(`https://wa.me/${restaurantPhone}?text=${message}`, '_blank');
+        }
 
-            // 4. Deschide WhatsApp
-            const url = `https://wa.me/${restaurantPhone}?text=${message}`;
-            window.open(url, '_blank');
+        // --- Logică Modal Meniu (Pop-up dinamic) ---
+        const menus = {
+            'aperitive': {
+                title: "Aperitive",
+                icon: "fa-bowl-food",
+                items: [
+                    { name: "Bruschete cu Roșii", desc: "Busuioc proaspăt, usturoi, ulei măsline", price: "28 RON" },
+                    { name: "Platou Tradițional", desc: "Brânzeturi locale, mezeluri, ceapă (2 pers)", price: "75 RON" },
+                    { name: "Supă Cremă de Hribi", desc: "Crutoane aromate, ulei de trufe", price: "32 RON" }
+                ]
+            },
+            'principal': {
+                title: "Fel Principal",
+                icon: "fa-drumstick-bite",
+                items: [
+                    { name: "Ribeye Steak", desc: "Vită maturată 28 zile, cartofi wedges", price: "120 RON" },
+                    { name: "Pui Coquelet", desc: "La cuptor, cu ierburi aromatice", price: "55 RON" },
+                    { name: "Paste cu Trufe", desc: "Tagliatelle proaspete, sos alb", price: "48 RON" }
+                ]
+            },
+            'vinuri': {
+                title: "Vinuri",
+                icon: "fa-wine-glass",
+                items: [
+                    { name: "Fetească Neagră", desc: "Sec, Catleya (Sticlă)", price: "110 RON" },
+                    { name: "Chardonnay Baricat", desc: "Sec, Recaș (Sticlă)", price: "90 RON" },
+                    { name: "Prosecco", desc: "Pahar", price: "25 RON" }
+                ]
+            },
+            'desert': {
+                title: "Deserturi",
+                icon: "fa-ice-cream",
+                items: [
+                    { name: "Papanași", desc: "Smântână și dulceață de afine", price: "32 RON" },
+                    { name: "Lava Cake", desc: "Ciocolată belgiană, înghețată vanilie", price: "36 RON" },
+                    { name: "Clătite Brașovene", desc: "Brânză dulce și stafide", price: "28 RON" }
+                ]
+            }
+        };
+
+        function openMenuModal(category) {
+            const data = menus[category];
+            const modal = document.getElementById('menuModal');
+            const listContainer = document.getElementById('menuItems');
+            
+            // Setare titlu si iconita
+            document.getElementById('menuTitle').innerText = data.title;
+            document.getElementById('menuIcon').className = `fa-solid ${data.icon}`;
+
+            // Generare lista preparate HTML
+            listContainer.innerHTML = data.items.map(item => `
+                <div class="flex justify-between items-start border-b border-gray-100 pb-3 last:border-0">
+                    <div class="text-left">
+                        <h4 class="font-bold text-gray-900">${item.name}</h4>
+                        <p class="text-xs text-gray-500">${item.desc}</p>
+                    </div>
+                    <span class="font-bold text-amber-600 whitespace-nowrap ml-4">${item.price}</span>
+                </div>
+            `).join('');
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeMenuModal() {
+            document.getElementById('menuModal').classList.add('hidden');
         }
     </script>
 </body>
