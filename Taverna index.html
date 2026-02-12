@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gusturi Alese - Restaurant Tradițional & Modern</title>
+    <title>Gusturi Alese - Rezervări Online</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
     
@@ -16,18 +15,15 @@
         html { scroll-behavior: smooth; }
         .glass { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); }
         
-        /* Scrollbar custom */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #d97706; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #b45309; }
+        /* Input-uri custom */
+        input, select, textarea { outline: none; transition: all 0.3s; }
+        input:focus, select:focus, textarea:focus { border-color: #d97706; box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1); }
     </style>
 </head>
 <body class="bg-stone-50 text-gray-800 antialiased">
 
     <nav class="fixed w-full z-40 top-0 left-0 glass shadow-sm border-b border-stone-100">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            
             <a href="#" class="flex items-center gap-3 hover:opacity-80 transition">
                 <div class="w-10 h-10 bg-amber-600 rounded-full flex items-center justify-center text-white text-lg shadow-md">
                     <i class="fa-solid fa-utensils"></i>
@@ -37,85 +33,41 @@
                     <span class="text-[10px] text-amber-700 font-bold uppercase tracking-wider">Bistro & Wine</span>
                 </div>
             </a>
-
             <div class="hidden md:flex items-center gap-8 font-medium text-sm text-gray-600">
                 <a href="#acasa" class="hover:text-amber-600 transition">Acasă</a>
                 <a href="#meniu" class="hover:text-amber-600 transition">Meniu</a>
-                <a href="#poveste" class="hover:text-amber-600 transition">Povestea Noastră</a>
+                <a href="#poveste" class="hover:text-amber-600 transition">Poveste</a>
                 <a href="#contact" class="hover:text-amber-600 transition">Contact</a>
-                
                 <button onclick="toggleModal()" class="bg-amber-600 text-white px-6 py-2.5 rounded-full hover:bg-amber-700 transition shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-0.5 flex items-center gap-2 font-semibold">
-                    <i class="fa-regular fa-calendar-days"></i> 
-                    <span>Rezervă o Masă</span>
+                    <i class="fa-regular fa-calendar-days"></i> <span>Rezervă o Masă</span>
                 </button>
             </div>
-
-            <button onclick="toggleMenu()" class="md:hidden text-2xl text-gray-700 p-2">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+            <button onclick="toggleMenu()" class="md:hidden text-2xl text-gray-700 p-2"><i class="fa-solid fa-bars"></i></button>
         </div>
-
         <div id="mobileMenu" class="hidden absolute top-20 left-0 w-full bg-white border-t border-gray-100 shadow-xl flex flex-col p-6 gap-4 z-30">
             <a href="#acasa" onclick="toggleMenu()" class="text-lg font-medium py-2 border-b border-gray-50">Acasă</a>
             <a href="#meniu" onclick="toggleMenu()" class="text-lg font-medium py-2 border-b border-gray-50">Meniu</a>
-            <a href="#poveste" onclick="toggleMenu()" class="text-lg font-medium py-2 border-b border-gray-50">Povestea Noastră</a>
             <a href="#contact" onclick="toggleMenu()" class="text-lg font-medium py-2">Contact</a>
-            <button onclick="toggleModal(); toggleMenu()" class="bg-amber-600 text-white w-full py-4 rounded-xl font-bold mt-2 shadow-lg">
-                Rezervă Acum
-            </button>
+            <button onclick="toggleModal(); toggleMenu()" class="bg-amber-600 text-white w-full py-4 rounded-xl font-bold mt-2 shadow-lg">Rezervă Acum</button>
         </div>
     </nav>
 
     <header id="acasa" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1920&auto=format&fit=crop" 
-                 class="w-full h-full object-cover object-center" 
-                 alt="Restaurant interior cozy">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1920&auto=format&fit=crop" class="w-full h-full object-cover object-center">
             <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
         </div>
-
         <div class="relative z-10 max-w-7xl mx-auto px-6 w-full py-12 md:py-0">
             <div class="max-w-2xl text-white">
                 <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full mb-8 border border-white/20 shadow-sm">
                     <i class="fa-solid fa-wine-glass text-amber-400"></i>
                     <span class="text-sm font-bold text-amber-50">Experiență Culinară Autentică</span>
                 </div>
-                
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                    Savoarea <span class="text-amber-500 italic">tradiției</span> în fiecare farfurie.
-                </h1>
-                
-                <p class="text-lg md:text-xl text-gray-200 mb-10 leading-relaxed max-w-lg font-light">
-                    Ingrediente locale, rețete reinterpretate și o atmosferă intimă. 
-                    Locul unde fiecare masă devine o amintire plăcută.
-                </p>
-                
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">Savoarea <span class="text-amber-500 italic">tradiției</span>.</h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-10 leading-relaxed max-w-lg font-light">Ingrediente locale, rețete reinterpretate și o atmosferă intimă.</p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <button onclick="toggleModal()" class="bg-amber-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-amber-700 transition shadow-xl hover:shadow-amber-500/20 flex items-center justify-center gap-3">
-                        <i class="fa-solid fa-utensils"></i> 
-                        Rezervă Masă
-                    </button>
-                    
-                    <a href="#meniu" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-gray-900 transition flex items-center justify-center">
-                        Vezi Meniul
-                    </a>
-                </div>
-
-                <div class="mt-16 flex items-center gap-10 border-t border-white/20 pt-8">
-                    <div>
-                        <p class="text-3xl font-serif text-amber-400">4.9</p>
-                        <p class="text-xs font-medium text-gray-400 uppercase tracking-wide">Stele Google</p>
-                    </div>
-                    <div class="h-10 w-px bg-white/20"></div>
-                    <div>
-                        <p class="text-3xl font-serif text-amber-400">Chef</p>
-                        <p class="text-xs font-medium text-gray-400 uppercase tracking-wide">Premiat</p>
-                    </div>
-                    <div class="h-10 w-px bg-white/20"></div>
-                    <div>
-                        <p class="text-3xl font-serif text-amber-400">100%</p>
-                        <p class="text-xs font-medium text-gray-400 uppercase tracking-wide">Ingrediente Proaspete</p>
-                    </div>
+                    <button onclick="toggleModal()" class="bg-amber-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-amber-700 transition shadow-xl hover:shadow-amber-500/20 flex items-center justify-center gap-3"><i class="fa-solid fa-utensils"></i> Rezervă Masă</button>
+                    <a href="#meniu" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-gray-900 transition flex items-center justify-center">Vezi Meniul</a>
                 </div>
             </div>
         </div>
@@ -126,44 +78,39 @@
             <div class="text-center mb-20">
                 <span class="text-amber-600 font-bold tracking-wider uppercase text-sm">Din bucătăria noastră</span>
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-2 mb-4">Meniul Zilei</h2>
-                <p class="text-gray-500 max-w-2xl mx-auto">O selecție atentă de preparate gătite cu pasiune.</p>
             </div>
-
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="group bg-white rounded-2xl p-8 border border-stone-200 hover:border-amber-300 transition-all duration-300 hover:shadow-xl cursor-pointer" onclick="toggleModal()">
-                    <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl text-amber-600 mb-6 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">
+                    <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl text-amber-600 mb-6 group-hover:bg-amber-600 group-hover:text-white transition">
                         <i class="fa-solid fa-bowl-food"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2 text-gray-900">Aperitive</h3>
-                    <p class="text-gray-500 text-sm mb-6">Bruschete, platouri tradiționale și supe cremă.</p>
-                    <div class="text-amber-700 font-bold text-sm uppercase tracking-wide">Vezi Selecția <i class="fa-solid fa-arrow-right ml-1"></i></div>
+                    <p class="text-gray-500 text-sm mb-6">Bruschete, platouri tradiționale.</p>
+                    <div class="text-amber-700 font-bold text-sm uppercase">Vezi Selecția <i class="fa-solid fa-arrow-right ml-1"></i></div>
                 </div>
-
                 <div class="group bg-white rounded-2xl p-8 border border-stone-200 hover:border-amber-300 transition-all duration-300 hover:shadow-xl cursor-pointer" onclick="toggleModal()">
-                    <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl text-amber-600 mb-6 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">
+                    <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl text-amber-600 mb-6 group-hover:bg-amber-600 group-hover:text-white transition">
                         <i class="fa-solid fa-drumstick-bite"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2 text-gray-900">Fel Principal</h3>
-                    <p class="text-gray-500 text-sm mb-6">Steak vită, paste artizanale și preparate la cuptor.</p>
-                    <div class="text-amber-700 font-bold text-sm uppercase tracking-wide">Vezi Selecția <i class="fa-solid fa-arrow-right ml-1"></i></div>
+                    <p class="text-gray-500 text-sm mb-6">Steak vită, paste artizanale.</p>
+                    <div class="text-amber-700 font-bold text-sm uppercase">Vezi Selecția <i class="fa-solid fa-arrow-right ml-1"></i></div>
                 </div>
-
                 <div class="group bg-white rounded-2xl p-8 border border-stone-200 hover:border-amber-300 transition-all duration-300 hover:shadow-xl cursor-pointer" onclick="toggleModal()">
-                    <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl text-amber-600 mb-6 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">
+                    <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl text-amber-600 mb-6 group-hover:bg-amber-600 group-hover:text-white transition">
                         <i class="fa-solid fa-wine-glass"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900">Vinuri & Băuturi</h3>
-                    <p class="text-gray-500 text-sm mb-6">O colecție vastă de vinuri românești și internaționale.</p>
-                    <div class="text-amber-700 font-bold text-sm uppercase tracking-wide">Vezi Selecția <i class="fa-solid fa-arrow-right ml-1"></i></div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Vinuri</h3>
+                    <p class="text-gray-500 text-sm mb-6">Colecție de vinuri românești.</p>
+                    <div class="text-amber-700 font-bold text-sm uppercase">Vezi Selecția <i class="fa-solid fa-arrow-right ml-1"></i></div>
                 </div>
-
                 <div class="group bg-white rounded-2xl p-8 border border-stone-200 hover:border-amber-300 transition-all duration-300 hover:shadow-xl cursor-pointer" onclick="toggleModal()">
-                    <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl text-amber-600 mb-6 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">
+                    <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl text-amber-600 mb-6 group-hover:bg-amber-600 group-hover:text-white transition">
                         <i class="fa-solid fa-ice-cream"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2 text-gray-900">Deserturi</h3>
-                    <p class="text-gray-500 text-sm mb-6">Papanași, lava cake și prăjituri de casă.</p>
-                    <div class="text-amber-700 font-bold text-sm uppercase tracking-wide">Vezi Selecția <i class="fa-solid fa-arrow-right ml-1"></i></div>
+                    <p class="text-gray-500 text-sm mb-6">Papanași, lava cake.</p>
+                    <div class="text-amber-700 font-bold text-sm uppercase">Vezi Selecția <i class="fa-solid fa-arrow-right ml-1"></i></div>
                 </div>
             </div>
         </div>
@@ -172,37 +119,12 @@
     <section id="poveste" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
             <div class="md:w-1/2 relative">
-                <div class="absolute inset-0 bg-amber-100 rounded-3xl -rotate-3 scale-105"></div>
-                <img src="https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=1000&auto=format&fit=crop" 
-                     alt="Chef cooking" 
-                     class="rounded-3xl shadow-2xl w-full relative z-10 hover:scale-[1.01] transition duration-500 object-cover h-[500px]">
+                <img src="https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=1000&auto=format&fit=crop" class="rounded-3xl shadow-2xl w-full h-[500px] object-cover">
             </div>
             <div class="md:w-1/2">
                 <span class="text-amber-600 font-bold tracking-wider uppercase text-sm">Despre noi</span>
                 <h2 class="text-4xl font-bold text-gray-900 mt-2 mb-6">Pasiune pentru gust</h2>
-                <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                    La <strong>Gusturi Alese</strong>, credem că mâncarea aduce oamenii împreună. Am deschis acest restaurant din dorința de a oferi un loc unde tradiția întâlnește rafinamentul.
-                </p>
-                <div class="space-y-4">
-                    <div class="flex items-start gap-4">
-                        <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 flex-shrink-0 mt-1">
-                            <i class="fa-solid fa-leaf"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-900">Ingrediente Locale</h4>
-                            <p class="text-sm text-gray-500">Colaborăm cu producători locali pentru prospețime maximă.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 flex-shrink-0 mt-1">
-                            <i class="fa-solid fa-fire-burner"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-900">Gătit cu Suflet</h4>
-                            <p class="text-sm text-gray-500">Fiecare preparat este pregătit pe loc, la comandă.</p>
-                        </div>
-                    </div>
-                </div>
+                <p class="text-lg text-gray-600 mb-6 leading-relaxed">Credem că mâncarea aduce oamenii împreună. Am deschis acest restaurant din dorința de a oferi un loc unde tradiția întâlnește rafinamentul.</p>
             </div>
         </div>
     </section>
@@ -210,135 +132,100 @@
     <footer id="contact" class="bg-gray-900 text-gray-400 pt-20 pb-10 border-t-4 border-amber-600">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-12 border-b border-gray-800 pb-12 mb-12">
-                
                 <div class="col-span-1 md:col-span-1">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 bg-amber-600 rounded-full flex items-center justify-center text-white">
-                            <i class="fa-solid fa-utensils"></i>
-                        </div>
-                        <h2 class="text-2xl font-bold text-white font-serif">Gusturi Alese</h2>
-                    </div>
-                    <p class="text-sm mb-8 leading-relaxed">
-                        Restaurantul unde aromele prind viață. Vă așteptăm cu drag la masă!
-                    </p>
-                    
+                    <h2 class="text-2xl font-bold text-white font-serif mb-6">Gusturi Alese</h2>
+                    <p class="text-sm mb-8 leading-relaxed">Restaurantul unde aromele prind viață.</p>
                     <div class="flex gap-3">
-                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-[#1877F2] text-white rounded-lg flex items-center justify-center transition-all duration-300">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-[#E4405F] text-white rounded-lg flex items-center justify-center transition-all duration-300">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-black text-white rounded-lg flex items-center justify-center transition-all duration-300 border border-gray-700 hover:border-gray-500">
-                            <i class="fa-brands fa-tiktok"></i>
-                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-[#1877F2] text-white rounded-lg flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-[#E4405F] text-white rounded-lg flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-black text-white rounded-lg flex items-center justify-center transition border border-gray-700"><i class="fa-brands fa-tiktok"></i></a>
                     </div>
                 </div>
-
                 <div class="md:col-span-1">
                     <h3 class="text-white font-bold text-lg mb-6">Contact</h3>
                     <ul class="space-y-4">
-                        <li class="flex gap-3 items-start">
-                            <i class="fa-solid fa-location-dot text-amber-600 mt-1"></i>
-                            <span class="text-sm">Bulevardul Unirii Nr. 10,<br>București</span>
-                        </li>
-                        <li class="flex gap-3 items-center">
-                            <i class="fa-solid fa-phone text-amber-600"></i>
-                            <a href="tel:0721234567" class="text-sm hover:text-white transition">0721 234 567</a>
-                        </li>
-                        <li class="flex gap-3 items-center">
-                            <i class="fa-solid fa-envelope text-amber-600"></i>
-                            <span class="text-sm">rezervari@gusturialese.ro</span>
-                        </li>
+                        <li class="flex gap-3 items-start"><i class="fa-solid fa-location-dot text-amber-600 mt-1"></i> <span class="text-sm">Bulevardul Unirii Nr. 10,<br>București</span></li>
+                        <li class="flex gap-3 items-center"><i class="fa-solid fa-phone text-amber-600"></i> <a href="tel:0721234567" class="text-sm hover:text-white transition">0721 234 567</a></li>
                     </ul>
                 </div>
-
                 <div class="md:col-span-2">
-                    <h3 class="text-white font-bold text-lg mb-6">Program Restaurant</h3>
+                    <h3 class="text-white font-bold text-lg mb-6">Program</h3>
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-gray-800 rounded-lg p-4 text-center border border-gray-700">
-                            <span class="block text-gray-500 text-xs uppercase mb-1">Luni - Joi</span>
-                            <span class="block text-white font-bold text-lg">12:00 - 23:00</span>
-                        </div>
-                        <div class="bg-gray-800 rounded-lg p-4 text-center border border-gray-700">
-                            <span class="block text-gray-500 text-xs uppercase mb-1">Vineri - Duminică</span>
-                            <span class="block text-white font-bold text-lg">12:00 - 00:00</span>
-                        </div>
+                        <div class="bg-gray-800 rounded-lg p-4 text-center border border-gray-700"><span class="block text-gray-500 text-xs uppercase mb-1">Luni - Joi</span><span class="block text-white font-bold text-lg">12:00 - 23:00</span></div>
+                        <div class="bg-gray-800 rounded-lg p-4 text-center border border-gray-700"><span class="block text-gray-500 text-xs uppercase mb-1">Vineri - Dum</span><span class="block text-white font-bold text-lg">12:00 - 00:00</span></div>
                     </div>
                 </div>
             </div>
-            
-            <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
-                <p>&copy; 2024 Gusturi Alese. Toate drepturile rezervate.</p>
-                <p class="mt-2 md:mt-0 opacity-50">Creat cu pasiune.</p>
-            </div>
+            <div class="text-center text-sm text-gray-600"><p>&copy; 2024 Gusturi Alese.</p></div>
         </div>
     </footer>
 
     <div id="bookingModal" class="hidden fixed inset-0 z-[60]" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="toggleModal()"></div>
-
         <div class="fixed inset-0 z-10 overflow-y-auto">
             <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
                 
-                <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-5xl h-[85vh] sm:h-[650px] flex flex-col md:flex-row">
-                    
-                    <button onclick="toggleModal()" class="absolute top-4 right-4 z-50 bg-black/20 hover:bg-black/40 text-white md:text-gray-400 md:bg-transparent md:hover:bg-gray-100 p-2 rounded-full transition duration-200">
-                        <i class="fa-solid fa-xmark text-xl"></i>
-                    </button>
+                <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-4xl flex flex-col md:flex-row">
+                    <button onclick="toggleModal()" class="absolute top-4 right-4 z-50 bg-gray-100 hover:bg-gray-200 text-gray-600 p-2 rounded-full transition duration-200"><i class="fa-solid fa-xmark text-xl"></i></button>
 
-                    <div class="bg-amber-700 text-white w-full md:w-[350px] flex-shrink-0 p-8 flex flex-col justify-between relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-                            <i class="fa-solid fa-wine-bottle text-[200px] absolute -bottom-10 -right-10 transform rotate-12"></i>
-                        </div>
-
+                    <div class="bg-amber-700 text-white w-full md:w-[300px] flex-shrink-0 p-8 flex flex-col justify-between relative">
                         <div class="relative z-10">
-                            <h3 class="text-2xl font-serif font-bold mb-2">Rezervare Rapidă</h3>
-                            <p class="text-amber-100 text-sm mb-8">Pentru grupuri mai mari de 8 persoane, vă rugăm să ne sunați.</p>
-                            
+                            <h3 class="text-2xl font-serif font-bold mb-2">Rezervare Masă</h3>
+                            <p class="text-amber-100 text-sm mb-6">Completează formularul și te vom redirecționa automat către WhatsApp pentru confirmare.</p>
                             <div class="space-y-4">
-                                <a href="tel:0721234567" class="flex items-center gap-4 bg-white/10 hover:bg-white/20 p-4 rounded-xl transition border border-white/10 group">
-                                    <div class="w-10 h-10 rounded-full bg-white text-amber-700 flex items-center justify-center group-hover:scale-110 transition">
-                                        <i class="fa-solid fa-phone"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-xs text-amber-200 uppercase font-bold">Rezervări Telefonice</p>
-                                        <p class="font-bold text-lg">0721 234 567</p>
-                                    </div>
-                                </a>
-
-                                <a href="https://wa.me/40721234567" target="_blank" class="flex items-center gap-4 bg-green-600/90 hover:bg-green-600 p-4 rounded-xl transition border border-white/10 group shadow-lg">
-                                    <div class="w-10 h-10 rounded-full bg-white text-green-700 flex items-center justify-center group-hover:scale-110 transition">
-                                        <i class="fa-brands fa-whatsapp text-xl"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-xs text-green-100 uppercase font-bold">Scrie pe WhatsApp</p>
-                                        <p class="font-bold text-lg">Chat Rapid</p>
-                                    </div>
+                                <a href="tel:0721234567" class="flex items-center gap-4 bg-white/10 hover:bg-white/20 p-4 rounded-xl transition border border-white/10">
+                                    <div class="w-8 h-8 rounded-full bg-white text-amber-700 flex items-center justify-center"><i class="fa-solid fa-phone"></i></div>
+                                    <div><p class="text-xs text-amber-200 uppercase font-bold">Sună-ne</p><p class="font-bold">0721 234 567</p></div>
                                 </a>
                             </div>
                         </div>
-
-                        <div class="relative z-10 text-xs text-amber-200 mt-auto pt-8 border-t border-white/20">
-                            <p>Deschis zilnic: 12:00 - 23:00</p>
-                        </div>
                     </div>
 
-                    <div class="flex-1 bg-white flex flex-col h-full w-full relative">
-                        <div class="p-6 pb-0 border-b border-gray-100">
-                            <h3 class="text-xl font-bold text-gray-900 font-serif">Alege Data și Ora</h3>
-                            <p class="text-sm text-gray-500">Veți primi confirmarea rezervării pe email.</p>
+                    <div class="flex-1 bg-white p-8">
+                        <div class="mb-6">
+                            <h3 class="text-xl font-bold text-gray-900 font-serif">Detalii Rezervare</h3>
+                            <p class="text-sm text-gray-500">Confirmarea se primește instant pe WhatsApp.</p>
                         </div>
                         
-                        <div class="flex-1 w-full bg-gray-50 relative overflow-hidden">
-                             <div class="calendly-inline-widget" 
-                                  data-url="https://calendly.com/313choices?hide_landing_page_details=1&hide_gdpr_banner=1" 
-                                  style="min-width:320px;height:100%;width:100%;">
-                             </div>
-                             <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-                        </div>
-                    </div>
+                        <form id="whatsappForm" onsubmit="sendToWhatsapp(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Nume Complet</label>
+                                    <input type="text" id="name" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500 focus:border-amber-500" placeholder="ex: Andrei Popescu">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Telefon</label>
+                                    <input type="tel" id="phone" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500 focus:border-amber-500" placeholder="ex: 07xx xxx xxx">
+                                </div>
+                            </div>
 
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Data</label>
+                                    <input type="date" id="date" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Ora</label>
+                                    <input type="time" id="time" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Număr Persoane</label>
+                                <select id="guests" class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                                    <option value="2 Persoane">2 Persoane</option>
+                                    <option value="3-4 Persoane">3-4 Persoane</option>
+                                    <option value="5-6 Persoane">5-6 Persoane</option>
+                                    <option value="Grup Mare (7+)">Grup Mare (7+)</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-2xl"></i> Trimite Cererea pe WhatsApp
+                            </button>
+                            <p class="text-xs text-center text-gray-400 mt-2">Nu stocăm datele tale. Mesajul se trimite direct de pe telefonul tău.</p>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -353,12 +240,29 @@
         function toggleModal() {
             const modal = document.getElementById('bookingModal');
             modal.classList.toggle('hidden');
-            
-            if (!modal.classList.contains('hidden')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
+            document.body.style.overflow = modal.classList.contains('hidden') ? 'auto' : 'hidden';
+        }
+
+        function sendToWhatsapp(e) {
+            e.preventDefault();
+
+            // 1. Preia datele din formular
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const guests = document.getElementById('guests').value;
+
+            // 2. Numarul de telefon al restaurantului (AICI SCHIMBI NUMARUL TAU)
+            // Format: 407xxxxxxxx (fara + sau 00)
+            const restaurantPhone = "40721234567"; 
+
+            // 3. Construieste mesajul
+            const message = `Salut, aș dori o rezervare la Gusturi Alese.%0A%0A👤 Nume: *${name}*%0A📞 Telefon: ${phone}%0A📅 Data: ${date}%0A⏰ Ora: ${time}%0A👥 Persoane: ${guests}%0A%0ASe poate confirma?`;
+
+            // 4. Deschide WhatsApp
+            const url = `https://wa.me/${restaurantPhone}?text=${message}`;
+            window.open(url, '_blank');
         }
     </script>
 </body>
